@@ -10,7 +10,7 @@
         注意，两个属性只能选址一个;
         另外，如果使用了mybatis-generator-maven-plugin，那么在pom.xml中定义的properties都可以直接在generatorConfig.xml中使用
      -->
-    <properties resource="application.yml"/>
+    <properties resource="application.properties"/>
     <!-- 在MBG工作的时候，需要额外加载的依赖包,location属性指明加载jar/zip包的全路径-->
     <classPathEntry location="C:\Users\deer-li\AppData\Roaming\JetBrains\IntelliJIdea2022.2\jdbc-drivers\MySQL Connector\J\5.1.47\mysql-connector-java-5.1.47.jar"/>
     <!--
@@ -47,10 +47,11 @@
             <property name="addRemarkComments" value="true"/>
         </commentGenerator>
         <!--数据库连接配置-->
-        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://localhost:3306/hfuugraduate"
-                        userId="root"
-                        password="123456" >
+        <jdbcConnection driverClass="${spring.datasource.driver-class-name}"
+                        connectionURL="${spring.datasource.url}"
+                        userId="${spring.datasource.username}"
+                        password="${spring.datasource.password}" >
+
         </jdbcConnection>
         <!-- java类型处理器
             用于处理DB中的类型到Java中的类型，默认使用JavaTypeResolverDefaultImpl；

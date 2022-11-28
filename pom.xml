@@ -61,6 +61,10 @@
 				<configuration>
 					<verbose>true</verbose>
 					<overwrite>true</overwrite>
+					<!--mybatis的代码生成器的配置文件-->
+					<configurationFile>src/main/resources/generatorConfig.xml</configurationFile>
+					<!--将当前pom的依赖项添加到生成器的类路径中-->
+					<includeCompileDependencies>true</includeCompileDependencies>
 				</configuration>
 			</plugin>
 		</plugins>
