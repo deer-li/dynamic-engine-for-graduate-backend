@@ -8,7 +8,7 @@
 		<version>2.7.6</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.example</groupId>
+	<groupId>com.hfuu</groupId>
 	<artifactId>graduate</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>graduate</name>
@@ -69,5 +69,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
 </project>
