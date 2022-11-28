@@ -1,4 +1,4 @@
-package com.example.graduate;
+package com.hfuu.graduate;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

@@ -1,8 +1,13 @@
+# 端口配置
 server:
   port: 8080
+# 数据库配置
 spring:
   datasource:
     username: root
     password: 123456
-    url: jdbc:mysql://localhost:3306/hfuugraduate
+    url: jdbc:mysql://localhost:3306/hfuugraduate?characterEncoding=UTF-8&serverTimezone=UTC
     driver-class-name: com.mysql.jdbc.Driver
+# mybatis配置
+mybatis:
+  type-aliases-package: com.hfuu.graduate.entity

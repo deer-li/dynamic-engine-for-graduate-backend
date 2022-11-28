@@ -64,7 +64,7 @@
             targetPackage：生成的类要放的包，真实的包受enableSubPackages属性控制；
             targetProject：目标项目，指定一个存在的目录下，生成的内容会放到指定目录中，如果目录不存在，MBG不会自动建目录
          -->
-        <javaModelGenerator targetPackage="com.example.graduate.entity" targetProject="src/main/java">
+        <javaModelGenerator targetPackage="com.hfuu.graduate.entity" targetProject="src/main/java">
             <!--  for MyBatis3/MyBatis3Simple
                 自动为每一个生成的类创建一个构造方法，构造方法包含了所有的field；而不是使用setter；
              -->
@@ -83,7 +83,6 @@
                     1，属性名相同，类型相同，有相同的getter/setter方法；
              -->
             <!-- <property name="rootClass" value="com._520it.mybatis.domain.BaseDomain"/>-->
-
             <!-- 设置是否在getter方法中，对String类型字段调用trim()方法 -->
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>
@@ -92,10 +91,11 @@
                 或者只使用Mapper接口+Annotation，所以，如果 javaClientGenerator配置中配置了需要生成XML的话，这个元素就必须配置
             targetPackage/targetProject:同javaModelGenerator
          -->
-        <sqlMapGenerator targetPackage="com.example.graduate.mapper" targetProject="src/main/resources">
-            <!-- 在targetPackage的基础上，根据数据库的schema再生成一层package，最终生成的类放在这个package下，默认为false -->
+        <!-- 考虑到mybatis中注解开发方便可用足以满足，所以不愿再配置*mapper 文件的生成，而是使用纯注解开发 -->
+        <!--<sqlMapGenerator targetPackage="com.hfuu.graduate.mapper" targetProject="src/main/resources">
+            &lt;!&ndash; 在targetPackage的基础上，根据数据库的schema再生成一层package，最终生成的类放在这个package下，默认为false &ndash;&gt;
             <property name="enableSubPackages" value="false"/>
-        </sqlMapGenerator>
+        </sqlMapGenerator>-->
         <!-- 对于mybatis来说，即生成Mapper接口，注意，如果没有配置该元素，那么默认不会生成Mapper接口
             targetPackage/targetProject:同javaModelGenerator
             type：选择怎么生成mapper接口（在MyBatis3/MyBatis3Simple下）：
@@ -104,7 +104,7 @@
                 3，XMLMAPPER：会生成Mapper接口，接口完全依赖XML；
             注意，如果context是MyBatis3Simple：只支持ANNOTATEDMAPPER和XMLMAPPER
         -->
-        <javaClientGenerator targetPackage="com.example.graduate.mapper" type="XMLMAPPER" targetProject="src/main/java">
+        <javaClientGenerator targetPackage="com.hfuu.graduate.mapper" type="ANNOTATEDMAPPER" targetProject="src/main/java">
             <!-- 在targetPackage的基础上，根据数据库的schema再生成一层package，最终生成的类放在这个package下，默认为false -->
             <property name="enableSubPackages" value="false"/>
         </javaClientGenerator>
@@ -144,49 +144,36 @@
             15，delimitAllColumns：设置是否所有生成的SQL中的列名都使用标识符引起来。默认为false，delimitIdentifiers参考context的属性
             注意，table里面很多参数都是对javaModelGenerator，context等元素的默认属性的一个复写；
          -->
-        <table tableName="role" >
-
+        <table tableName="by_component_type" domainObjectName="ComponentByType">
             <!-- 参考 javaModelGenerator 的 constructorBased属性-->
             <property name="constructorBased" value="false"/>
-
             <!-- 默认为false，如果设置为true，在生成的SQL中，table名字不会加上catalog或schema； -->
             <property name="ignoreQualifiersAtRuntime" value="false"/>
-
             <!-- 参考 javaModelGenerator 的 immutable 属性 -->
             <property name="immutable" value="false"/>
-
             <!-- 指定是否只生成domain类，如果设置为true，只生成domain类，如果还配置了sqlMapGenerator，那么在mapper XML文件中，只生成resultMap元素 -->
             <property name="modelOnly" value="false"/>
-
             <!-- 参考 javaModelGenerator 的 rootClass 属性
             <property name="rootClass" value=""/>
              -->
-
             <!-- 参考javaClientGenerator 的  rootInterface 属性
             <property name="rootInterface" value=""/>
             -->
-
             <!-- 如果设置了runtimeCatalog，那么在生成的SQL中，使用该指定的catalog，而不是table元素上的catalog
             <property name="runtimeCatalog" value=""/>
             -->
-
             <!-- 如果设置了runtimeSchema，那么在生成的SQL中，使用该指定的schema，而不是table元素上的schema
             <property name="runtimeSchema" value=""/>
             -->
-
             <!-- 如果设置了runtimeTableName，那么在生成的SQL中，使用该指定的tablename，而不是table元素上的tablename
             <property name="runtimeTableName" value=""/>
             -->
-
             <!-- 注意，该属性只针对MyBatis3Simple有用；
                 如果选择的runtime是MyBatis3Simple，那么会生成一个SelectAll方法，如果指定了selectAllOrderByClause，那么会在该SQL中添加指定的这个order条件；
              -->
-            <property name="selectAllOrderByClause" value="age desc,username asc"/>
-
+            <property name="selectAllOrderByClause" value="create_time desc"/>
             <!-- 如果设置为true，生成的model类会直接使用column本身的名字，而不会再使用驼峰命名方法，比如BORN_DATE，生成的属性名字就是BORN_DATE,而不会是bornDate -->
             <property name="useActualColumnNames" value="false"/>
-
-
             <!-- generatedKey用于生成生成主键的方法，
                 如果设置了该元素，MBG会在生成的<insert>元素中生成一条正确的<selectKey>元素，该元素可选
                 column:主键的列名；
