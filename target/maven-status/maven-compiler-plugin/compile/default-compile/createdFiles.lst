@@ -1,1 +1,7 @@
 com\hfuu\graduate\GraduateApplication.class
+com\hfuu\graduate\service\serviceIml\test01Impl.class
+com\hfuu\graduate\service\test01.class
+com\hfuu\graduate\controller\TestController.class
+com\hfuu\graduate\config\SwaggerConfig.class
+com\hfuu\graduate\entity\ComponentByType.class
+com\hfuu\graduate\mapper\ComponentByTypeMapper.class
