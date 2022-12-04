@@ -1,5 +1,6 @@
 package com.hfuu.graduate.controller;
 
+import com.hfuu.graduate.entity.ComponentByType;
 import com.hfuu.graduate.utils.G;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -17,6 +18,8 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/hfuu/componentType")
 public class ComponentDealController {
 
+    private ComponentByType componentByType;
+
     @ResponseBody
     @ApiOperation(value = "获取组件属性表信息",notes = "获取组件属性表信息")
     @GetMapping("/getComponentTypeInfo")
@@ -26,11 +29,12 @@ public class ComponentDealController {
 
     @ApiOperation(value = "添加组件属性信息",notes = "添加组件属性信息")
     @PostMapping("/addComponentTypeInfo")
-    public G<String> addComponentTypeInfo(){
+    public G<ComponentByType> addComponentTypeInfo(){
         /*
         * 遍历组件属性面板回传的对象，并持久化
         * */
-        return G.ok();
+
+        return G.ok(componentByType);
     }
 
     @ApiOperation(value = "更新组件属性信息",notes = "更新组件属性信息")

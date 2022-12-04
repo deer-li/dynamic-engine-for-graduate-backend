@@ -3,6 +3,7 @@ package com.hfuu.graduate.service.serviceIml;
 import com.hfuu.graduate.entity.ComponentByType;
 import com.hfuu.graduate.mapper.ComponentByTypeMapper;
 import com.hfuu.graduate.service.test01;
+import com.hfuu.graduate.utils.G;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -19,8 +20,8 @@ public class test01Impl implements test01 {
     private ComponentByTypeMapper componentByTypeMapper;
 
     @Override
-    public String toStr() {
+    public G<List<ComponentByType>> toStr() {
         List<ComponentByType> componentByTypes = componentByTypeMapper.selectAll();
-        return componentByTypes.toString();
+        return G.ok(componentByTypes);
     }
 }
