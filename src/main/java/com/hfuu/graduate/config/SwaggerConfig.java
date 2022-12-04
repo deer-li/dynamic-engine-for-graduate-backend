@@ -33,9 +33,9 @@ public class SwaggerConfig {
 
     private ApiInfo apiInfo(){
         return new ApiInfoBuilder()
-                .title("项目接口文档")
-                .description("项目描述")
-                .contact(new Contact("作者", "作者URL", "作者Email"))
+                .title("面向多前端框架的可视化动态表单模型引擎架构接口文档")
+                .description("毕设专用")
+                .contact(new Contact("deer-li", "https://blog.csdn.net/weixin_43953283", "15974939814@qq.com"))
                 .version("1.0")
                 .build();
     }

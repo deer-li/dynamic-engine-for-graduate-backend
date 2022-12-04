@@ -32,4 +32,13 @@ public class ComponentByType {
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
     }
+
+    @Override
+    public String toString() {
+        return "ComponentByType{" +
+                "cid=" + cid +
+                ", cname='" + cname + '\'' +
+                ", createTime=" + createTime +
+                '}';
+    }
 }
