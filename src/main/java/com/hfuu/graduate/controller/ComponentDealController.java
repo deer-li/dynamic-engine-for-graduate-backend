@@ -1,11 +1,17 @@
 package com.hfuu.graduate.controller;
 
 import com.hfuu.graduate.entity.ComponentByType;
+import com.hfuu.graduate.service.ComponentDealService;
 import com.hfuu.graduate.utils.G;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.beanutils.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.lang.reflect.InvocationTargetException;
+import java.util.Map;
 
 
 /**
@@ -18,7 +24,8 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/hfuu/componentType")
 public class ComponentDealController {
 
-    private ComponentByType componentByType;
+    @Autowired
+    private ComponentDealService componentDealService;
 
     @ResponseBody
     @ApiOperation(value = "获取组件属性表信息",notes = "获取组件属性表信息")
@@ -27,21 +34,31 @@ public class ComponentDealController {
         return "ok";
     }
 
-    @ApiOperation(value = "添加组件属性信息",notes = "添加组件属性信息")
+    @ResponseBody
     @PostMapping("/addComponentTypeInfo")
-    public G<ComponentByType> addComponentTypeInfo(){
+    @ApiOperation(value = "添加组件属性信息",notes = "添加组件属性信息")
+    public G<Integer> addComponentTypeInfo(@RequestBody ComponentByType componentByType)  {
+//        System.out.println(map);
+//        BeanUtils.populate(componentByType,map);
         /*
         * 遍历组件属性面板回传的对象，并持久化
         * */
+        //org.springframework.http.converter.HttpMessageNotReadableException:
+        // Required request body is missing:
 
-        return G.ok(componentByType);
+        System.out.println(componentByType);
+        return G.ok(componentDealService.addComponentType(componentByType));
     }
 
     @ApiOperation(value = "更新组件属性信息",notes = "更新组件属性信息")
     @PostMapping("/updateComponentTypeInfo")
-    public String updateComponentTypeInfo(String id){
+    public String updateComponentTypeInfo(ComponentByType componentByType){
         /*
         * 根据组件属性的唯一标识id完成组件属性信息的更新工作
+        * */
+        Integer integer = componentDealService.updateComponentTypeById(componentByType);
+        /*
+        * 实际上，这里返回值类型应该写的抽象泛型封装好的对象
         * */
         return "ok";
     }

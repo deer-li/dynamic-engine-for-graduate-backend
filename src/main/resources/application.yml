@@ -8,6 +8,7 @@ spring:
     password: 123456
     url: jdbc:mysql://localhost:3306/hfuugraduate?characterEncoding=UTF-8&serverTimezone=UTC
     driver-class-name: com.mysql.cj.jdbc.Driver
+# 解决什么问题来着？解决引入swagger接口文档的情况
   mvc:
     pathmatch:
       matching-strategy: ant_path_matcher

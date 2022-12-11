@@ -23,10 +23,9 @@ public class TestController {
     private test01 test01;
 
     @ResponseBody
-    @GetMapping("/test")
+    @PostMapping("/test")
     @ApiOperation(value = "获取组件属性表中的所有信息",notes = "获取组件属性表中的所有信息")
     public G<List<ComponentByType>> testMethod(){
         return test01.toStr();
     }
-
 }
