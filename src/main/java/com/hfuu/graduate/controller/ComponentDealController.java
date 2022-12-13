@@ -37,7 +37,7 @@ public class ComponentDealController {
     @ResponseBody
     @PostMapping("/addComponentTypeInfo")
     @ApiOperation(value = "添加组件属性信息",notes = "添加组件属性信息")
-    public G<Integer> addComponentTypeInfo(@RequestBody ComponentByType componentByType)  {
+    public G<Integer> addComponentTypeInfo(@RequestBody(required = false) ComponentByType componentByType)  {
 //        System.out.println(map);
 //        BeanUtils.populate(componentByType,map);
         /*
