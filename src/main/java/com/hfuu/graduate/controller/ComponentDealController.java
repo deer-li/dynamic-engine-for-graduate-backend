@@ -6,13 +6,8 @@ import com.hfuu.graduate.utils.G;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.beanutils.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import java.lang.reflect.InvocationTargetException;
-import java.util.Map;
-
 
 /**
  * @ author deer-li
@@ -38,14 +33,6 @@ public class ComponentDealController {
     @PostMapping("/addComponentTypeInfo")
     @ApiOperation(value = "添加组件属性信息",notes = "添加组件属性信息")
     public G<Integer> addComponentTypeInfo(@RequestBody(required = false) ComponentByType componentByType)  {
-//        System.out.println(map);
-//        BeanUtils.populate(componentByType,map);
-        /*
-        * 遍历组件属性面板回传的对象，并持久化
-        * */
-        //org.springframework.http.converter.HttpMessageNotReadableException:
-        // Required request body is missing:
-
         System.out.println(componentByType);
         return G.ok(componentDealService.addComponentType(componentByType));
     }
